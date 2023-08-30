@@ -5,6 +5,7 @@ import React from "react";
 import trelloImg from "@/Images/trello_logo.png";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import Avatar from "react-avatar";
+import { UserCircleIcon } from "@heroicons/react/24/solid";
 function Header() {
   return (
     <header>
@@ -30,6 +31,12 @@ function Header() {
           </form>
           <Avatar name="Asfund Mirza" round color="#0055D1" size="45" />
         </div>
+      </div>
+      <div className="flex items-center justify-center mt-2">
+        <p className="flex items-center  bg-white p-5 shadow-lg rounded-lg text-lg w-fit font-light italic max-w-3xl text-[#0055D1] ">
+          <UserCircleIcon className=" inline-block text-[#0055D1] w-10 h-10 mr-2" />
+          GPT is summerizing your content
+        </p>
       </div>
     </header>
   );
