@@ -1,7 +1,9 @@
+import Header from "@/components/Header";
+
 export default function Home() {
   return (
     <main>
-      <h1>hello to next js</h1>
+      <Header />
     </main>
   );
 }
