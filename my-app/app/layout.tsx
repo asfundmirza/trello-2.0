@@ -17,3 +17,5 @@ export default function RootLayout({
     </html>
   );
 }
+//            background-color: #D9AFD9;
+//background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
