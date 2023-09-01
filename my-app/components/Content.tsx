@@ -10,11 +10,14 @@ import {
 import Column from "./Column";
 
 function Content() {
-  const [getBoard, board, setBoardState] = useBoardStore((state) => [
-    state.getBoard,
-    state.board,
-    state.setBoardState,
-  ]);
+  const [getBoard, board, setBoardState, updateTodoInDB] = useBoardStore(
+    (state) => [
+      state.getBoard,
+      state.board,
+      state.setBoardState,
+      state.updateTodoInDB,
+    ]
+  );
   useEffect(() => {
     getBoard();
     console.log(board);
@@ -79,6 +82,8 @@ function Content() {
         todos: finishTodos,
       });
       //update in DB
+      updateTodoInDB(todoMoved, endCol.id);
+
       setBoardState({ ...board, columns: newColumns });
     }
   };
