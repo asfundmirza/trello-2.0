@@ -6,7 +6,12 @@ import trelloImg from "@/Images/trello_logo.png";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import Avatar from "react-avatar";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
+import { useBoardStore } from "@/store/BoardStore";
 function Header() {
+  const [searchString, setSearchString] = useBoardStore((state) => [
+    state.searchString,
+    state.setSearchString,
+  ]);
   return (
     <header>
       <div className=" flex flex-col md:flex-row items-center p-5  rounded-b-2xl">
@@ -25,6 +30,7 @@ function Header() {
               type="text"
               className=" outline-none rounded-md   p-2 flex-1 "
               placeholder="search"
+              onChange={(e) => setSearchString(e.target.value)}
             />
 
             <button type="submit" hidden>
