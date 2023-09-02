@@ -1,3 +1,4 @@
+import Modal from "@/components/Modal";
 import "./globals.css";
 import type { Metadata } from "next";
 
@@ -13,7 +14,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-gray-200">{children}</body>
+      <body className="bg-gray-200">
+        {children}
+        <Modal />
+      </body>
     </html>
   );
 }
+//            background-color: #D9AFD9;
+//background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
