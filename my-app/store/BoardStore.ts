@@ -7,16 +7,21 @@ interface BoardSate {
   getBoard: () => void;
   setBoardState: (board: Board) => void;
   updateTodoInDB: (todo: Todo, columnId: TypedColumn) => void;
-
+  newTaskInput: string;
+  newTaskType: TypedColumn;
   searchString: string;
   setSearchString: (searchString: string) => void;
   deleteTask: (taskIndex: number, todoId: Todo, id: TypedColumn) => void;
+  setNewTaskInput: (input: string) => void;
+  setNewTaskType: (columnId: TypedColumn) => void;
 }
 
 export const useBoardStore = create<BoardSate>((set, get) => ({
   board: { columns: new Map<TypedColumn, Column>() },
 
   searchString: "",
+  newTaskInput: "",
+  newTaskType: "todo",
   setSearchString: (searchString: string) => set({ searchString }),
 
   getBoard: async () => {
@@ -40,6 +45,9 @@ export const useBoardStore = create<BoardSate>((set, get) => ({
       todo.$id
     );
   },
+  setNewTaskInput: (input: string) => set({ newTaskInput: input }),
+
+  setNewTaskType: (columnId: TypedColum) => set({ newTaskType: columnId }),
 
   updateTodoInDB: async (todo, columnId) => {
     await databases.updateDocument(
