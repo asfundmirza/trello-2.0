@@ -1,3 +1,4 @@
+import { useBoardStore } from "@/store/BoardStore";
 import React from "react";
 import {
   DraggableProvidedDragHandleProps,
@@ -21,6 +22,8 @@ function TodoCard({
   draggableProps,
   dragHandleProps,
 }: Props) {
+  const deleteTask = useBoardStore((state) => state.deleteTask);
+
   return (
     <div
       className="bg-white rounded-md drop-shadow-md space-y-2 mt-2"
@@ -30,7 +33,10 @@ function TodoCard({
     >
       <div className="flex items-center justify-between p-3">
         <p>{todo.title}</p>
-        <button className="text-red-400 hover:text-red-600">
+        <button
+          onClick={() => deleteTask(index, todo, id)}
+          className="text-red-400 hover:text-red-600"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
