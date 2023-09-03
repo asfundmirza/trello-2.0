@@ -9,11 +9,13 @@ interface BoardSate {
   updateTodoInDB: (todo: Todo, columnId: TypedColumn) => void;
   newTaskInput: string;
   newTaskType: TypedColumn;
+  image: File | null;
   searchString: string;
   setSearchString: (searchString: string) => void;
   deleteTask: (taskIndex: number, todoId: Todo, id: TypedColumn) => void;
   setNewTaskInput: (input: string) => void;
   setNewTaskType: (columnId: TypedColumn) => void;
+  setImage: (image: File | null) => void;
 }
 
 export const useBoardStore = create<BoardSate>((set, get) => ({
@@ -22,6 +24,7 @@ export const useBoardStore = create<BoardSate>((set, get) => ({
   searchString: "",
   newTaskInput: "",
   newTaskType: "todo",
+  image: null,
   setSearchString: (searchString: string) => set({ searchString }),
 
   getBoard: async () => {
@@ -48,7 +51,7 @@ export const useBoardStore = create<BoardSate>((set, get) => ({
   setNewTaskInput: (input: string) => set({ newTaskInput: input }),
 
   setNewTaskType: (columnId: TypedColum) => set({ newTaskType: columnId }),
-
+  setImage: (image: File | null) => set({ image }),
   updateTodoInDB: async (todo, columnId) => {
     await databases.updateDocument(
       process.env.NEXT_PUBLIC_DATABASE_ID!,
