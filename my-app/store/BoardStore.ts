@@ -40,7 +40,7 @@ export const useBoardStore = create<BoardSate>((set, get) => ({
   deleteTask: async (taskIndex: number, todo: Todo, id: TypedColumn) => {
     const newColumns = new Map(get().board.columns);
 
-    newColumns.get(id)?.todos.splice(taskIndex, 1);
+    newColumns.get(id)?.todo.splice(taskIndex, 1);
     set({ board: { columns: newColumns } });
 
     if (todo.image) {
@@ -105,9 +105,9 @@ export const useBoardStore = create<BoardSate>((set, get) => ({
       const column = newColumns.get(columnId);
 
       if (!column) {
-        newColumns.set(columnId, { id: columnId, todos: [newTodo] });
+        newColumns.set(columnId, { id: columnId, todo: [newTodo] });
       } else {
-        newColumns.get(columnId)?.todos.push(newTodo);
+        newColumns.get(columnId)?.todo.push(newTodo);
       }
       return {
         board: {

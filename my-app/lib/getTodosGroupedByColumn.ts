@@ -11,10 +11,10 @@ export const getTodosGroupedByColumn = async () => {
     if (!acc.get(todo.status)) {
       acc.set(todo.status, {
         id: todo.status,
-        todos: [],
+        todo: [],
       });
     }
-    acc.get(todo.status)!.todos.push({
+    acc.get(todo.status)!.todo.push({
       $id: todo.$id,
       $createdAt: todo.$createdAt,
       title: todo.title,
@@ -29,7 +29,7 @@ export const getTodosGroupedByColumn = async () => {
     if (!columns.get(columntype)) {
       columns.set(columntype, {
         id: columntype,
-        todos: [],
+        todo: [],
       });
     }
   }
