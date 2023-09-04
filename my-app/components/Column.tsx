@@ -80,7 +80,6 @@ function Column({ id, todos, index }: Props) {
                             innerRef={provided.innerRef}
                             todo={todo}
                             index={index}
-                            snapshot={snapshot}
                             id={id}
                           />
                         )}
