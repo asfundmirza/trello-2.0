@@ -42,8 +42,11 @@ function Header() {
       </div>
       <div className="flex items-center justify-center py-2 md:py-5">
         <p className="flex items-center  bg-white p-5 shadow-lg rounded-lg text-lg w-fit font-light italic max-w-3xl text-[#0055D1] ">
-          <UserCircleIcon className=" inline-block text-[#0055D1] w-10 h-10 mr-2" />
-          GPT is summerizing your content
+          {/* <UserCircleIcon className=" inline-block text-[#0055D1] w-10 h-10 mr-2" /> */}
+          <span>
+            Note: Add your todos and you can drag and drop todos from one column
+            to another.
+          </span>
         </p>
       </div>
     </header>
