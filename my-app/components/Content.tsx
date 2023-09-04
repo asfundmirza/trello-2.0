@@ -44,42 +44,42 @@ function Content() {
 
     const startCol: Column = {
       id: startColIndex[0],
-      todos: startColIndex[1].todos,
+      todo: startColIndex[1].todo,
     };
     const endCol: Column = {
       id: endColIndex[0],
-      todos: endColIndex[1].todos,
+      todo: endColIndex[1].todo,
     };
     if (!startCol || !endCol) return;
     //if drag and drop on the same position then do nothing
     if (source.index === destination.index && startCol === endCol) return;
 
-    const newTodos = startCol.todos;
+    const newTodos = startCol.todo;
     const [todoMoved] = newTodos.splice(source.index, 1);
     if (startCol.id === endCol.id) {
       //Same column task drag and drop
       newTodos.splice(destination.index, 0, todoMoved);
       const newCol = {
         id: startCol.id,
-        todos: newTodos,
+        todo: newTodos,
       };
       const newColumns = new Map(board.columns);
       newColumns.set(startCol.id, newCol);
       setBoardState({ ...board, columns: newColumns });
     } else {
       //Different column task drag and drop
-      const finishTodos = Array.from(endCol.todos);
+      const finishTodos = Array.from(endCol.todo);
       finishTodos.splice(destination.index, 0, todoMoved);
 
       const newColumns = new Map(board.columns);
       const newCol = {
         id: startCol.id,
-        todos: newTodos,
+        todo: newTodos,
       };
       newColumns.set(startCol.id, newCol);
       newColumns.set(endCol.id, {
         id: endCol.id,
-        todos: finishTodos,
+        todo: finishTodos,
       });
       //update in DB
       updateTodoInDB(todoMoved, endCol.id);
@@ -97,7 +97,7 @@ function Content() {
             ref={provided.innerRef}
           >
             {Array.from(board.columns.entries()).map(([id, column], index) => (
-              <Column key={id} id={id} todos={column.todos} index={index} />
+              <Column key={id} id={id} todos={column.todo} index={index} />
             ))}
           </div>
         )}
